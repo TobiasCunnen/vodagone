@@ -25,9 +25,9 @@ public class Abonnementen {
         if ("1234-1234".equals(token)) {
 
 
-            abo.add(new SimpelAbonnement(0, "Vodafone", "Mobiele telefonie 100"));
-            abo.add(new SimpelAbonnement(1, "Vodafone", "Mobiele telefonie 250"));
-            abo.add(new SimpelAbonnement(2, "Ziggo", "Kabel-internet (download 300 Mpbs)"));
+            abo.add(new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100"));
+            abo.add(new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250"));
+            abo.add(new SimpelAbonnement(2, "ziggo", "Kabel-internet (download 300 Mpbs)"));
             abonnementResponse.setAbonnementen(abo);
             abonnementResponse.setTotalPrice(42.37);
 
@@ -46,12 +46,12 @@ public class Abonnementen {
 
             DetailAbonnement detailAbonnement = new DetailAbonnement();
             detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("Vodafone");
+            detailAbonnement.setAanbieder("vodafone");
             detailAbonnement.setDienst("Mobiele telefonie 100");
             detailAbonnement.setPrijs("€5,- per maand");
             detailAbonnement.setStartDatum("2017-01-01");
             detailAbonnement.setVerdubbeling("standaard");
-            detailAbonnement.setDeelbaar(false);
+            detailAbonnement.setDeelbaar(true);
             detailAbonnement.setStatus("actief");
 
             return Response.ok().entity(detailAbonnement).build();
@@ -69,9 +69,12 @@ public class Abonnementen {
 
         if ("1234-1234".equals(token)) {
 
+            abo.add(new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100"));
+            abo.add(new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250"));
+            abo.add(new SimpelAbonnement(2, "ziggo", "Kabel-internet (download 300 Mpbs)"));
             abo.add(new SimpelAbonnement(abonnementRequest.getId(), abonnementRequest.getAanbieder(), abonnementRequest.getDienst()));
             abonnementResponse.setAbonnementen(abo);
-            abonnementResponse.setTotalPrice(42.37);
+            abonnementResponse.setTotalPrice(60.47);
 
 
             return Response.ok().entity(abonnementResponse).build();
@@ -89,7 +92,7 @@ public class Abonnementen {
 
             DetailAbonnement detailAbonnement = new DetailAbonnement();
             detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("Vodafone");
+            detailAbonnement.setAanbieder("vodafone");
             detailAbonnement.setDienst("Mobiele telefonie 100");
             detailAbonnement.setPrijs("€5,- per maand");
             detailAbonnement.setStartDatum("2017-01-01");
@@ -112,7 +115,7 @@ public class Abonnementen {
 
             DetailAbonnement detailAbonnement = new DetailAbonnement();
             detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("Vodafone");
+            detailAbonnement.setAanbieder("vodafone");
             detailAbonnement.setDienst("Mobiele telefonie 100");
             detailAbonnement.setPrijs("€5,- per maand");
             detailAbonnement.setStartDatum("2017-01-01");

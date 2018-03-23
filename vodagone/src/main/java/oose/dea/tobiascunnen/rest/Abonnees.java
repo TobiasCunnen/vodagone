@@ -6,6 +6,8 @@ import oose.dea.tobiascunnen.rest.dtos.AbonneesResponse;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
+import java.util.List;
 
 @Path("abonnees")
 public class Abonnees {
@@ -18,11 +20,23 @@ public class Abonnees {
 
             AbonneesResponse abonneesResponse = new AbonneesResponse();
 
+            List<AbonneesResponse> abonneesResponseList = new ArrayList<>();
+
             abonneesResponse.setId(0);
             abonneesResponse.setName("Meron");
             abonneesResponse.setEmail("Meron.Brouwer@han.nl");
 
-            return Response.ok().entity(abonneesResponse).build();
+            abonneesResponseList.add(abonneesResponse);
+
+            AbonneesResponse abonneesResponse2 = new AbonneesResponse();
+
+            abonneesResponse2.setId(1);
+            abonneesResponse2.setName("Dennis");
+            abonneesResponse2.setEmail("Dennis.Breuker@han.nl");
+
+            abonneesResponseList.add(abonneesResponse2);
+
+            return Response.ok().entity(abonneesResponseList).build();
         }else {
             return Response.status(403).build();
         }

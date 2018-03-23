@@ -17,23 +17,23 @@ import java.util.List;
 @Path("abonnementen/all")
 public class AllAbonnementen {
 
-    private List<SimpelAbonnement> abo = new ArrayList<>();
-
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getAllAbonnementen(@QueryParam("token") String token, @QueryParam("filter") String filter) {
-
-        AbonnementResponse abonnementResponse = new AbonnementResponse();
+    public Response filterAbonnementen(@QueryParam("token") String token, @QueryParam("filter") String filter) {
 
         if ("1234-1234".equals(token)) {
 
+            List<SimpelAbonnement> aboList = new ArrayList<>();
 
-            abo.add(new SimpelAbonnement(0, "Vodafone", "Mobiele telefonie 100"));
-            abo.add(new SimpelAbonnement(1, "Vodafone", "Mobiele telefonie 250"));
-            abonnementResponse.setAbonnementen(abo);
-            abonnementResponse.setTotalPrice(42.37);
+            SimpelAbonnement s1 = new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100");
+            SimpelAbonnement s2 = new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250");
+            SimpelAbonnement s3 = new SimpelAbonnement(2,"ziggo", "kabel-internet(download 300 Mbps)");
 
-            return Response.ok().entity(abonnementResponse).build();
+            aboList.add(s1);
+            aboList.add(s2);
+            aboList.add(s3);
+
+            return Response.ok().entity(aboList).build();
         } else {
             return Response.status(403).build();
         }
