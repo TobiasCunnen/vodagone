@@ -8,8 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="72d5c3db-6819-4fca-a36b-9ee6dc6994ba" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/vodagone/target/vodagone.war" afterPath="$PROJECT_DIR$/vodagone/target/vodagone.war" />
-      <change beforePath="$PROJECT_DIR$/vodagone/target/vodagone/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/vodagone/target/vodagone/META-INF/MANIFEST.MF" />
     </list>
     <ignored path="$PROJECT_DIR$/vodagone/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +36,8 @@
       <file leaf-file-name="Abonnementen.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/vodagone/src/main/java/oose/dea/tobiascunnen/rest/Abonnementen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="88" />
+            <state relative-caret-position="17">
+              <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -58,7 +56,7 @@
       <file leaf-file-name="Abonnees.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vodagone/src/main/java/oose/dea/tobiascunnen/rest/Abonnees.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
+            <state relative-caret-position="306">
               <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
               <folding />
             </state>
@@ -200,8 +198,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -245,29 +244,10 @@
               <item name="rest" type="462c0819:PsiDirectoryNode" />
               <item name="dtos" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="vodagone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vodagone" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vodagone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vodagone" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="vodagone" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vodagone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="vodagone" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="vodagone" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -525,7 +505,8 @@
       <workItem from="1521792061729" duration="596000" />
       <workItem from="1521792708784" duration="3539000" />
       <workItem from="1521833960961" duration="129000" />
-      <workItem from="1521834529181" duration="3099000" />
+      <workItem from="1521834529181" duration="3510000" />
+      <workItem from="1521846582962" duration="846000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed all restpoints.">
       <created>1521797890679</created>
@@ -538,7 +519,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9191000" />
+    <option name="totallyTimeSpent" value="10448000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -1118,7 +1099,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vodagone/src/main/java/oose/dea/tobiascunnen/rest/Abonnees.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
+        <state relative-caret-position="306">
           <caret line="24" column="38" lean-forward="false" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding />
         </state>
@@ -1137,8 +1118,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vodagone/src/main/java/oose/dea/tobiascunnen/rest/Abonnementen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="54" lean-forward="true" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="88" />
+        <state relative-caret-position="17">
+          <caret line="33" column="68" lean-forward="false" selection-start-line="33" selection-start-column="68" selection-end-line="33" selection-end-column="68" />
           <folding />
         </state>
       </provider>
