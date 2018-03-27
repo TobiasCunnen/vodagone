@@ -1,5 +1,6 @@
 package oose.dea.tobiascunnen.rest;
 
+import oose.dea.tobiascunnen.data.DBConnection;
 import oose.dea.tobiascunnen.rest.dtos.AbonnementRequest;
 import oose.dea.tobiascunnen.rest.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.rest.dtos.DetailAbonnement;
@@ -20,10 +21,10 @@ public class Abonnementen {
     @Produces(MediaType.APPLICATION_JSON)
     public Response abonnementen(@QueryParam("token") String token) {
 
+
         AbonnementResponse abonnementResponse = new AbonnementResponse();
 
         if ("1234-1234".equals(token)) {
-
 
             abo.add(new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100"));
             abo.add(new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250"));
