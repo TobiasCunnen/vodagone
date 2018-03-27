@@ -20,7 +20,7 @@ values
 
 insert into abonnementenVanAbonnees (abonneesId, abonnementId,aanbieder,dienst,prijs,startDatum,verdubbeling,deelbaar,status)
 values
-(1,1,'vodafone', 'Mobiele telefonie 100', 5.00, '2017-01-01', 'standaard', true, 'actief'),
-(1,2,'vodafone', 'Mobiele telefonie 250', 5.00, '2017-01-01' , 'standaard', true, 'actief'),
-(1,3,'ziggo', 'Kabel-internet (download 300 Mpbs)', 5.00, '2017-01-01', 'standaard', true, 'actief');
+(1,1,'vodafone', 'Mobiele telefonie 100', 5.00, '2017-01-01', 'standaard', 1, 'actief'),
+(1,2,'vodafone', 'Mobiele telefonie 250', 5.00, '2017-01-01' , 'standaard', 1, 'actief'),
+(1,3,'ziggo', 'Kabel-internet (download 300 Mpbs)', 5.00, '2017-01-01', 'standaard', 1, 'actief');
 

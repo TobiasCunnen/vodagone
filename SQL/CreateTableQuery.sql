@@ -1,20 +1,20 @@
 use vodagoneDB;
 
-drop table AbonnementenVanAbonnees;
-drop table Abonnementen;
-drop table Abonnees;
+drop table if exists AbonnementenVanAbonnees;
+drop table if exists Abonnementen;
+drop table if exists Abonnees;
 
 create table Abonnementen
 (
-id int primary key auto_increment,
+id int identity(1,1) primary key,
 aanbieder varchar(255) not null,
 dienst varchar(255) not null
 );
 
 create table Abonnees
 (
-id int primary key auto_increment,
-name varchar(255) unique key not null,
+id int identity(1,1) primary key,
+name varchar(255) unique not null,
 email varchar(255) not null,
 wachtwoord varchar(255) not null
 );
@@ -28,7 +28,7 @@ dienst varchar(255) not null,
 prijs decimal(9,2),
 startDatum date,
 verdubbeling varchar(255),
-deelbaar boolean,
+deelbaar bit,
 status varchar(255),
 
 primary key(abonneesId,abonnementId),
