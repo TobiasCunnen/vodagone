@@ -1,10 +1,9 @@
-package oose.dea.tobiascunnen.rest;
+package oose.dea.tobiascunnen.presentation;
 
-import oose.dea.tobiascunnen.data.DBConnection;
-import oose.dea.tobiascunnen.rest.dtos.AbonnementRequest;
-import oose.dea.tobiascunnen.rest.dtos.AbonnementResponse;
-import oose.dea.tobiascunnen.rest.dtos.DetailAbonnement;
-import oose.dea.tobiascunnen.rest.dtos.SimpelAbonnement;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementRequest;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
+import oose.dea.tobiascunnen.presentation.dtos.DetailAbonnement;
+import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

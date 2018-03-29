@@ -1,6 +1,6 @@
-package oose.dea.tobiascunnen.rest;
+package oose.dea.tobiascunnen.presentation;
 
-import oose.dea.tobiascunnen.rest.dtos.LoginRequest;
+import oose.dea.tobiascunnen.presentation.dtos.LoginRequest;
 import org.junit.Before;
 import org.junit.Test;
 

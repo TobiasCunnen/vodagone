@@ -1,7 +1,7 @@
-package oose.dea.tobiascunnen.rest;
+package oose.dea.tobiascunnen.presentation;
 
-import oose.dea.tobiascunnen.rest.dtos.LoginRequest;
-import oose.dea.tobiascunnen.rest.dtos.LoginResponse;
+import oose.dea.tobiascunnen.presentation.dtos.LoginRequest;
+import oose.dea.tobiascunnen.presentation.dtos.LoginResponse;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;

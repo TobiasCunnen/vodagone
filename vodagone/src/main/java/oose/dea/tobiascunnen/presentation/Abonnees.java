@@ -1,7 +1,7 @@
-package oose.dea.tobiascunnen.rest;
+package oose.dea.tobiascunnen.presentation;
 
 
-import oose.dea.tobiascunnen.rest.dtos.AbonneesResponse;
+import oose.dea.tobiascunnen.presentation.dtos.AbonneesResponse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

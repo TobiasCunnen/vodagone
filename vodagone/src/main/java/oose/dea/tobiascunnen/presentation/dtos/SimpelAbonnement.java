@@ -1,4 +1,4 @@
-package oose.dea.tobiascunnen.rest.dtos;
+package oose.dea.tobiascunnen.presentation.dtos;
 
 public class SimpelAbonnement {
 

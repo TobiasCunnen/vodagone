@@ -1,10 +1,8 @@
-package oose.dea.tobiascunnen.rest;
+package oose.dea.tobiascunnen.presentation;
 
 
-import oose.dea.tobiascunnen.rest.dtos.AbonnementResponse;
-import oose.dea.tobiascunnen.rest.dtos.SimpelAbonnement;
+import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
 
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -1,6 +1,6 @@
-package oose.dea.tobiascunnen.rest.dtos;
+package oose.dea.tobiascunnen.presentation.dtos;
 
-public class DetailAbonnement {
+public class AbonnementRequest {
     private int id;
     private String aanbieder;
     private String dienst;
@@ -8,31 +8,6 @@ public class DetailAbonnement {
     private String startDatum;
     private String verdubbeling;
     private boolean deelbaar;
-    private String status;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getAanbieder() {
-        return aanbieder;
-    }
-
-    public void setAanbieder(String aanbieder) {
-        this.aanbieder = aanbieder;
-    }
-
-    public String getDienst() {
-        return dienst;
-    }
-
-    public void setDienst(String dienst) {
-        this.dienst = dienst;
-    }
 
     public String getPrijs() {
         return prijs;
@@ -58,7 +33,7 @@ public class DetailAbonnement {
         this.verdubbeling = verdubbeling;
     }
 
-    public boolean getDeelbaar() {
+    public boolean isDeelbaar() {
         return deelbaar;
     }
 
@@ -72,5 +47,31 @@ public class DetailAbonnement {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    private String status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getAanbieder() {
+        return aanbieder;
+    }
+
+    public void setAanbieder(String aanbieder) {
+        this.aanbieder = aanbieder;
+    }
+
+    public String getDienst() {
+        return dienst;
+    }
+
+    public void setDienst(String dienst) {
+        this.dienst = dienst;
     }
 }
