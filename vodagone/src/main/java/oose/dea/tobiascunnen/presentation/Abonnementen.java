@@ -1,10 +1,12 @@
 package oose.dea.tobiascunnen.presentation;
 
+import oose.dea.tobiascunnen.domain.AbonnementDAO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementRequest;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.presentation.dtos.DetailAbonnement;
 import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -19,7 +21,6 @@ public class Abonnementen {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response abonnementen(@QueryParam("token") String token) {
-
 
         AbonnementResponse abonnementResponse = new AbonnementResponse();
 
