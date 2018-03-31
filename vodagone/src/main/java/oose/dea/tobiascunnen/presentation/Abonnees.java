@@ -1,8 +1,10 @@
 package oose.dea.tobiascunnen.presentation;
 
 
+import oose.dea.tobiascunnen.domain.AbonnementDAO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonneesResponse;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;

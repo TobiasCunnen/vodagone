@@ -1,17 +1,14 @@
 package oose.dea.tobiascunnen.domain;
 
-import oose.dea.tobiascunnen.data.DBConnection;
+import oose.dea.tobiascunnen.datasource.connection.MSSQLConnection;
 
 import javax.inject.Inject;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class AbonnementDAO {
 
     @Inject
-    private DBConnection dbConnection;
+    private MSSQLConnection dbConnection;
 
     private Connection con;
 
@@ -21,10 +18,11 @@ public class AbonnementDAO {
 
         String sql = "SELECT * FROM Abonnementen";
 
-        Statement st = null;
         try {
-            st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+
+            PreparedStatement st = con.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
 
