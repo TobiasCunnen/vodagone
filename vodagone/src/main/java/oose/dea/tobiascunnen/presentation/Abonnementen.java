@@ -18,9 +18,14 @@ public class Abonnementen {
 
     private List<SimpelAbonnement> abo = new ArrayList<>();
 
+    @Inject
+    AbonnementDAO abonnementDAO;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response abonnementen(@QueryParam("token") String token) {
+
+        abonnementDAO.getAbonnementen();
 
         AbonnementResponse abonnementResponse = new AbonnementResponse();
 

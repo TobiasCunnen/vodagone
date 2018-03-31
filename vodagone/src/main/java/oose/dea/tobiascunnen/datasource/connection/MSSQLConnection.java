@@ -11,16 +11,12 @@ import java.util.Properties;
 
 public class MSSQLConnection implements DBConnection {
 
+    private Properties properties = new Properties();
 
-    @Override
-    public Connection getConnection() {
+    private String driver;
+    private String connectionURL;
 
-        Connection cnEmps = null;
-
-       Properties properties = new Properties();
-
-       String driver;
-       String connectionURL;
+    private void setProperties() {
 
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));
@@ -30,7 +26,15 @@ public class MSSQLConnection implements DBConnection {
 
         driver = properties.getProperty("mssql.driver");
         connectionURL = properties.getProperty("mssql.connectionString");
+    }
 
+
+    @Override
+    public Connection getConnection() {
+
+        Connection cnEmps = null;
+
+        this.setProperties();
 
         try {
 
@@ -44,5 +48,7 @@ public class MSSQLConnection implements DBConnection {
         }
 
         return cnEmps;
+
     }
+
 }
