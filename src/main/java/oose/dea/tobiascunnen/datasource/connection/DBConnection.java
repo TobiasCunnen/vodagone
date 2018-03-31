@@ -4,5 +4,7 @@ import java.sql.Connection;
 
 public interface DBConnection {
 
+    void setProperties();
+
     Connection getConnection();
 }

@@ -16,7 +16,7 @@ public class MSSQLConnection implements DBConnection {
     private String driver;
     private String connectionURL;
 
-    private void setProperties() {
+    public void setProperties() {
 
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));
