@@ -16,17 +16,19 @@ public class AbonnementDAO {
 
     private Connection con;
 
-    public List<AbonnementenPOJO> getAbonnementen() {
+    public List<AbonnementenPOJO> getAbonnementen(String filter) {
         
         List<AbonnementenPOJO> abonnementen = new ArrayList<>();
 
         this.setCon();
 
-        String sql = "SELECT * FROM Abonnementen";
+        String sql = "SELECT * FROM Abonnementen WHERE aanbieder LIKE ?";
 
         try {
 
             PreparedStatement st = con.prepareStatement(sql);
+
+            st.setString(1,'%'+filter+'%');
 
             ResultSet rs = st.executeQuery();
 

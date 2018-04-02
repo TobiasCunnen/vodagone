@@ -23,7 +23,7 @@ public class AllAbonnementen {
 
         if ("1234-1234".equals(token)) {
 
-            return abonnementenService.getAbonneenten();
+            return abonnementenService.getAbonneenten(filter);
 
         } else {
             return Response.status(403).build();

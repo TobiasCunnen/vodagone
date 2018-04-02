@@ -57,7 +57,7 @@ public class Abonnementen {
 
         if ("1234-1234".equals(token)) {
 
-            abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),abonnementRequest.getStatus());
+            abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),"standaard","Proef");
 
             return abonnementenVanAbonneesService.getAbonneenten();
 
@@ -89,7 +89,7 @@ public class Abonnementen {
 
         if ("1234-1234".equals(token)) {
 
-           abonnementenVanAbonneesService.updateStatus(abonnementRequest.getVerdubbeling(),id);
+           abonnementenVanAbonneesService.updateVerdubbeling(abonnementRequest.getVerdubbeling(),id);
 
             return abonnementenVanAbonneesService.selectOneAbonnement(id);
         } else {

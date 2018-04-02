@@ -20,8 +20,8 @@ public class AbonnementenVanAbonneesService {
         return Response.ok().entity(abonnementenVanAbonneesDAO.selectOneAbonnementenVanAbonnee(id)).build();
     }
 
-    public void addAbonnement(int abonnementId, String startDatum, String status){
-        abonnementenVanAbonneesDAO.addAbonnement(abonnementId,startDatum,status);
+    public void addAbonnement(int abonnementId, String startDatum,String verdubbeling, String status){
+        abonnementenVanAbonneesDAO.addAbonnement(abonnementId,startDatum,verdubbeling,status);
     }
 
     public void deleteAbonnement(int abonnementId){
@@ -30,5 +30,9 @@ public class AbonnementenVanAbonneesService {
 
     public void updateStatus(String status, int abonnementId){
         abonnementenVanAbonneesDAO.updateStatus(status,abonnementId);
+    }
+
+    public void updateVerdubbeling(String verdubbeling, int id) {
+        abonnementenVanAbonneesDAO.updateVerdubbeling(verdubbeling,id);
     }
 }

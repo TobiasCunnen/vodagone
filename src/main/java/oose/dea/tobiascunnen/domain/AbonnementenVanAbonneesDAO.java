@@ -10,11 +10,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AbonnementenVanAbonneesDAO {
 
+
+    private final double verdubbeld = 1.5;
 
     @Inject
     private MySQLConnection dbConnection;
@@ -45,7 +50,12 @@ public class AbonnementenVanAbonneesDAO {
             while (rs.next()) {
 
                 abonnementen.add(getRowData(rs));
-                totalPrice += rs.getDouble("prijs");
+
+                if("verdubbeld".equals(rs.getString("verdubbeling"))) {
+                    totalPrice += rs.getDouble("prijs") * verdubbeld;
+                }else {
+                    totalPrice += rs.getDouble("prijs");
+                }
 
             }
         } catch (SQLException e) {
@@ -88,11 +98,14 @@ public class AbonnementenVanAbonneesDAO {
         return abonnement;
     }
 
-    public void addAbonnement(int abonnementId, String startDatum, String status){
+    public void addAbonnement(int abonnementId, String startDatum, String verdubbeling, String status){
 
         this.setCon();
 
-        String sql = "INSERT INTO AbonnementenVanAbonnees (abonneesId,abonnementId,startDatum,status) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO AbonnementenVanAbonnees (abonneesId,abonnementId,startDatum,verdubbeling,status) VALUES (?,?,?,?,?)";
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
 
         try {
 
@@ -100,8 +113,9 @@ public class AbonnementenVanAbonneesDAO {
 
             st.setInt(1,1);
             st.setInt(2,abonnementId);
-            st.setString(3,startDatum);
-            st.setString(4,"Proef");
+            st.setString(3,dateFormat.format(date));
+            st.setString(4,verdubbeling);
+            st.setString(5,status);
 
             st.executeUpdate();
 
@@ -153,6 +167,26 @@ public class AbonnementenVanAbonneesDAO {
         }
     }
 
+    public void updateVerdubbeling(String verdubbeling, int id) {
+        this.setCon();
+
+        String sql = "UPDATE AbonnementenVanAbonnees SET verdubbeling = ? WHERE abonneesId = ? AND abonnementId = ?";
+
+        try {
+
+            PreparedStatement st = con.prepareStatement(sql);
+
+            st.setString(1,verdubbeling);
+            st.setInt(2,1);
+            st.setInt(3,id);
+
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private AbonnementenPOJO getRowData(ResultSet rs) throws SQLException {
 
         AbonnementenPOJO abonnement = new AbonnementenPOJO();
@@ -160,7 +194,12 @@ public class AbonnementenVanAbonneesDAO {
         abonnement.setId(rs.getInt("abonnementId"));
         abonnement.setAanbieder(rs.getString("aanbieder"));
         abonnement.setDienst(rs.getString("dienst"));
-        abonnement.setPrijs("€"+rs.getString("prijs")+" per maand.");
+
+        if("verdubbeld".equals(rs.getString("verdubbeling"))){
+            abonnement.setPrijs("€" + (rs.getDouble("prijs")* verdubbeld) + " per maand.");
+        }else {
+            abonnement.setPrijs("€" + rs.getString("prijs") + " per maand.");
+        }
         abonnement.setStartDatum(rs.getString("startDatum"));
         abonnement.setDeelbaar(rs.getBoolean("deelbaar"));
         abonnement.setVerdubbeling(rs.getString("verdubbeling"));

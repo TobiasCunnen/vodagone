@@ -10,8 +10,8 @@ public class AbonnementenService {
     @Inject
     AbonnementDAO abonnementDAO;
 
-    public Response getAbonneenten(){
+    public Response getAbonneenten(String filter){
 
-        return Response.ok().entity(abonnementDAO.getAbonnementen()).build();
+        return Response.ok().entity(abonnementDAO.getAbonnementen(filter)).build();
     }
 }
