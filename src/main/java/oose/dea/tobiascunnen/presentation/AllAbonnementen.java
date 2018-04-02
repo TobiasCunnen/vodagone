@@ -1,6 +1,7 @@
 package oose.dea.tobiascunnen.presentation;
 
 import oose.dea.tobiascunnen.service.AbonnementenService;
+import oose.dea.tobiascunnen.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -16,12 +17,15 @@ public class AllAbonnementen {
     @Inject
     AbonnementenService abonnementenService;
 
+    @Inject
+    TokenService tokenService;
+
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response filterAbonnementen(@QueryParam("token") String token, @QueryParam("filter") String filter) {
+    public Response filterAbonnementen(@QueryParam("token") Integer token, @QueryParam("filter") String filter) {
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
             return abonnementenService.getAbonneenten(filter);
 

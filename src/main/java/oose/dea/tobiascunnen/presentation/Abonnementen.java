@@ -1,32 +1,30 @@
 package oose.dea.tobiascunnen.presentation;
 
-import oose.dea.tobiascunnen.domain.AbonnementDAO;
+import jdk.nashorn.internal.parser.Token;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementRequest;
-import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
-import oose.dea.tobiascunnen.presentation.dtos.DetailAbonnement;
-import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
 import oose.dea.tobiascunnen.service.AbonnementenVanAbonneesService;
+import oose.dea.tobiascunnen.service.TokenService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Path("abonnementen")
 public class Abonnementen {
 
-    private List<SimpelAbonnement> abo = new ArrayList<>();
-
     @Inject
     AbonnementenVanAbonneesService abonnementenVanAbonneesService;
 
+    @Inject
+    TokenService tokenService;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response abonnementen(@QueryParam("token") String token) {
+    public Response abonnementen(@QueryParam("token") Integer token) {
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
             return abonnementenVanAbonneesService.getAbonneenten();
 
@@ -38,9 +36,9 @@ public class Abonnementen {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response selectOneAbonnement(@QueryParam("token") String token, @PathParam("id") int id) {
+    public Response selectOneAbonnement(@QueryParam("token") Integer token, @PathParam("id") int id) {
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
           return abonnementenVanAbonneesService.selectOneAbonnement(id);
 
@@ -52,10 +50,10 @@ public class Abonnementen {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addAbonnementen(@QueryParam("token") String token, AbonnementRequest abonnementRequest) {
+    public Response addAbonnementen(@QueryParam("token") Integer token, AbonnementRequest abonnementRequest) {
 
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
             abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),"standaard","Proef");
 
@@ -69,9 +67,9 @@ public class Abonnementen {
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteAbonnement(@QueryParam("token") String token, @PathParam("id") int id) {
+    public Response deleteAbonnement(@QueryParam("token") Integer token, @PathParam("id") int id) {
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
             abonnementenVanAbonneesService.deleteAbonnement(id);
 
@@ -85,9 +83,9 @@ public class Abonnementen {
     @POST
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response verdubbelAbonnement(@QueryParam("token") String token, @PathParam("id") int id, AbonnementRequest abonnementRequest) {
+    public Response verdubbelAbonnement(@QueryParam("token") Integer token, @PathParam("id") int id, AbonnementRequest abonnementRequest) {
 
-        if ("1234-1234".equals(token)) {
+        if (tokenService.getToken().equals(token)) {
 
            abonnementenVanAbonneesService.updateVerdubbeling(abonnementRequest.getVerdubbeling(),id);
 

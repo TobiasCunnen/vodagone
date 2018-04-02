@@ -2,7 +2,10 @@ package oose.dea.tobiascunnen.presentation;
 
 import oose.dea.tobiascunnen.presentation.dtos.LoginRequest;
 import oose.dea.tobiascunnen.presentation.dtos.LoginResponse;
+import oose.dea.tobiascunnen.service.LoginService;
+import oose.dea.tobiascunnen.service.TokenService;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +16,12 @@ import javax.ws.rs.core.Response;
 @Path("/login")
 public class Login {
 
+    @Inject
+    LoginService loginService;
+
+    @Inject
+    TokenService tokenService;
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -20,9 +29,10 @@ public class Login {
 
         LoginResponse loginResponse = new LoginResponse();
 
-        if ("tobias".equals(loginRequest.getUser())) {
-            loginResponse.setUser("Tobias Cunnen");
-            loginResponse.setToken("1234-1234");
+        if (loginService.userLogin(loginRequest.getUser(),loginRequest.getPassword())) {
+
+            loginResponse.setUser(loginRequest.getUser());
+            loginResponse.setToken(tokenService.generateToken());
 
             return Response.ok().entity(loginResponse).build();
 

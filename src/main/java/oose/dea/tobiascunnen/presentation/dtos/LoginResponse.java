@@ -3,13 +3,13 @@ package oose.dea.tobiascunnen.presentation.dtos;
 public class LoginResponse {
 
     private String user;
-    private String token;
+    private Integer token;
 
-    public String getToken() {
+    public Integer getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(Integer token) {
         this.token = token;
     }
 
