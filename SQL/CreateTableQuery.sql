@@ -6,7 +6,7 @@ drop table if exists Abonnees;
 
 create table Abonnementen
 (
-id int identity(1,1) primary key,
+id int auto_increment primary key,
 aanbieder varchar(255) not null,
 dienst varchar(255) not null,
 prijs decimal(9,2),
@@ -16,7 +16,7 @@ deelbaar bit
 
 create table Abonnees
 (
-id int identity(1,1) primary key,
+id int auto_increment primary key,
 name varchar(255) unique not null,
 email varchar(255) not null,
 wachtwoord varchar(255) not null
@@ -26,6 +26,7 @@ create table AbonnementenVanAbonnees
 (
 abonneesId int,
 abonnementId int,
+verdubbeling varchar(255),
 startDatum date,
 status varchar(255),
 

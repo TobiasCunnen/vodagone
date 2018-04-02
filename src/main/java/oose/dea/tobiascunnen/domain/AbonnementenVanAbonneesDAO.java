@@ -1,6 +1,7 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.MSSQLConnection;
+import oose.dea.tobiascunnen.datasource.connection.MySQLConnection;
 import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 
@@ -16,7 +17,7 @@ public class AbonnementenVanAbonneesDAO {
 
 
     @Inject
-    private MSSQLConnection dbConnection;
+    private MySQLConnection dbConnection;
 
     private Connection con;
 
@@ -29,7 +30,7 @@ public class AbonnementenVanAbonneesDAO {
 
         this.setCon();
 
-        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,verdubbeling,deelbaar, startDatum, status " +
+        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
                 "FROM AbonnementenVanAbonnees AVA INNER JOIN Abonnementen A ON A.Id = AVA.abonnementId " +
                 "WHERE abonneesId = ?";
 
@@ -63,7 +64,7 @@ public class AbonnementenVanAbonneesDAO {
 
         AbonnementenPOJO abonnement = new AbonnementenPOJO();
 
-        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,verdubbeling,deelbaar, startDatum, status " +
+        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
                 "FROM AbonnementenVanAbonnees AVA INNER JOIN Abonnementen A ON A.Id = AVA.abonnementId " +
                 "WHERE abonneesId = ? AND abonnementId = ?";
 

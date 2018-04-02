@@ -15,15 +15,14 @@ insert into abonnementen (aanbieder,dienst,prijs,verdubbeling,deelbaar)
 values
 
 ('vodafone', 'Mobiele telefonie 100', 5, 'Nee', 0),
-('vodafone', 'Mobiele telefonie 250',10, 'Ja',0),
-('vodafone', 'Glasvezel-internet (download 500 Mbps)',40, 'Ja',0),
+('vodafone', 'Mobiele telefonie 250',10, 'standaard',0),
+('vodafone', 'Glasvezel-internet (download 500 Mbps)',40, 'standaard',0),
 ('ziggo', 'Kabel-internet (download 300 Mbps)',30, 'Nee', 0),
 ('ziggo', 'Eredivisie Live 1 t/m 5', 10, 'Nee',1),
 ('ziggo', 'HBO Plus',15,'Nee',1);
 
-insert into abonnementenVanAbonnees (abonneesId, abonnementId, startDatum,status)
+insert into abonnementenVanAbonnees (abonneesId, abonnementId, startDatum,verdubbeling,status)
 values
-(1,1,'2017-01-01', 'actief'),
-(1,2,'2017-01-01','actief'),
-(1,4,'2017-01-01', 'actief');
-
+(1,1,'2017-01-01','standaard', 'actief'),
+(1,2,'2017-01-01','standaard','actief'),
+(1,4,'2017-01-01','standaard', 'actief');
