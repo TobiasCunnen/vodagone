@@ -5,6 +5,7 @@ import oose.dea.tobiascunnen.presentation.dtos.AbonnementRequest;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.presentation.dtos.DetailAbonnement;
 import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
+import oose.dea.tobiascunnen.service.AbonnementenVanAbonneesService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -19,25 +20,16 @@ public class Abonnementen {
     private List<SimpelAbonnement> abo = new ArrayList<>();
 
     @Inject
-    AbonnementDAO abonnementDAO;
+    AbonnementenVanAbonneesService abonnementenVanAbonneesService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response abonnementen(@QueryParam("token") String token) {
 
-        abonnementDAO.getAbonnementen();
-
-        AbonnementResponse abonnementResponse = new AbonnementResponse();
-
         if ("1234-1234".equals(token)) {
 
-            abo.add(new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100"));
-            abo.add(new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250"));
-            abo.add(new SimpelAbonnement(2, "ziggo", "Kabel-internet (download 300 Mpbs)"));
-            abonnementResponse.setAbonnementen(abo);
-            abonnementResponse.setTotalPrice(42.37);
+            return abonnementenVanAbonneesService.getAbonneenten();
 
-            return Response.ok().entity(abonnementResponse).build();
         } else {
             return Response.status(403).build();
         }
@@ -50,17 +42,8 @@ public class Abonnementen {
 
         if ("1234-1234".equals(token)) {
 
-            DetailAbonnement detailAbonnement = new DetailAbonnement();
-            detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("vodafone");
-            detailAbonnement.setDienst("Mobiele telefonie 100");
-            detailAbonnement.setPrijs("€5,- per maand");
-            detailAbonnement.setStartDatum("2017-01-01");
-            detailAbonnement.setVerdubbeling("standaard");
-            detailAbonnement.setDeelbaar(true);
-            detailAbonnement.setStatus("actief");
+          return abonnementenVanAbonneesService.selectOneAbonnement(id);
 
-            return Response.ok().entity(detailAbonnement).build();
         } else {
             return Response.status(403).build();
         }
@@ -71,19 +54,13 @@ public class Abonnementen {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addAbonnementen(@QueryParam("token") String token, AbonnementRequest abonnementRequest) {
 
-        AbonnementResponse abonnementResponse = new AbonnementResponse();
 
         if ("1234-1234".equals(token)) {
 
-            abo.add(new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100"));
-            abo.add(new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250"));
-            abo.add(new SimpelAbonnement(2, "ziggo", "Kabel-internet (download 300 Mpbs)"));
-            abo.add(new SimpelAbonnement(abonnementRequest.getId(), abonnementRequest.getAanbieder(), abonnementRequest.getDienst()));
-            abonnementResponse.setAbonnementen(abo);
-            abonnementResponse.setTotalPrice(60.47);
+            abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),abonnementRequest.getStatus());
 
+            return abonnementenVanAbonneesService.getAbonneenten();
 
-            return Response.ok().entity(abonnementResponse).build();
         } else {
             return Response.status(403).build();
         }
@@ -96,17 +73,10 @@ public class Abonnementen {
 
         if ("1234-1234".equals(token)) {
 
-            DetailAbonnement detailAbonnement = new DetailAbonnement();
-            detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("vodafone");
-            detailAbonnement.setDienst("Mobiele telefonie 100");
-            detailAbonnement.setPrijs("€5,- per maand");
-            detailAbonnement.setStartDatum("2017-01-01");
-            detailAbonnement.setVerdubbeling("standaard");
-            detailAbonnement.setDeelbaar(false);
-            detailAbonnement.setStatus("opgezegd");
+            abonnementenVanAbonneesService.deleteAbonnement(id);
 
-            return Response.ok().entity(detailAbonnement).build();
+            return abonnementenVanAbonneesService.selectOneAbonnement(id);
+
         } else {
             return Response.status(403).build();
         }
@@ -115,21 +85,13 @@ public class Abonnementen {
     @POST
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response selectAbonnement(@QueryParam("token") String token, @PathParam("id") int id, AbonnementRequest abonnementRequest) {
+    public Response verdubbelAbonnement(@QueryParam("token") String token, @PathParam("id") int id, AbonnementRequest abonnementRequest) {
 
         if ("1234-1234".equals(token)) {
 
-            DetailAbonnement detailAbonnement = new DetailAbonnement();
-            detailAbonnement.setId(id);
-            detailAbonnement.setAanbieder("vodafone");
-            detailAbonnement.setDienst("Mobiele telefonie 100");
-            detailAbonnement.setPrijs("€5,- per maand");
-            detailAbonnement.setStartDatum("2017-01-01");
-            detailAbonnement.setVerdubbeling(abonnementRequest.getVerdubbeling());
-            detailAbonnement.setDeelbaar(false);
-            detailAbonnement.setStatus("actief");
+           abonnementenVanAbonneesService.updateStatus(abonnementRequest.getVerdubbeling(),id);
 
-            return Response.ok().entity(detailAbonnement).build();
+            return abonnementenVanAbonneesService.selectOneAbonnement(id);
         } else {
             return Response.status(403).build();
         }

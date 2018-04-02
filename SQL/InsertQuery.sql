@@ -11,16 +11,19 @@ values
 ('Dennis Breuker','Dennis.Breuker@han.nl','wachtwoord'),
 ('Michel Portier','Michel.Portier@han.nl','wachtwoord');
 
-insert into abonnementen (aanbieder,dienst)
+insert into abonnementen (aanbieder,dienst,prijs,verdubbeling,deelbaar)
 values
-('vodafone', 'Mobiele telefonie 100'),
-('vodafone', 'Mobiele telefonie 250'),
-('ziggo', 'Kabel-internet (download 300 Mpbs)'),
-('ziggo', 'Glasvezel-internet (download 500 Mbps)');
 
-insert into abonnementenVanAbonnees (abonneesId, abonnementId,aanbieder,dienst,prijs,startDatum,verdubbeling,deelbaar,status)
+('vodafone', 'Mobiele telefonie 100', 5, 'Nee', 0),
+('vodafone', 'Mobiele telefonie 250',10, 'Ja',0),
+('vodafone', 'Glasvezel-internet (download 500 Mbps)',40, 'Ja',0),
+('ziggo', 'Kabel-internet (download 300 Mbps)',30, 'Nee', 0),
+('ziggo', 'Eredivisie Live 1 t/m 5', 10, 'Nee',1),
+('ziggo', 'HBO Plus',15,'Nee',1);
+
+insert into abonnementenVanAbonnees (abonneesId, abonnementId, startDatum,status)
 values
-(1,1,'vodafone', 'Mobiele telefonie 100', 5.00, '2017-01-01', 'standaard', 1, 'actief'),
-(1,2,'vodafone', 'Mobiele telefonie 250', 5.00, '2017-01-01' , 'standaard', 1, 'actief'),
-(1,3,'ziggo', 'Kabel-internet (download 300 Mpbs)', 5.00, '2017-01-01', 'standaard', 1, 'actief');
+(1,1,'2017-01-01', 'actief'),
+(1,2,'2017-01-01','actief'),
+(1,4,'2017-01-01', 'actief');
 

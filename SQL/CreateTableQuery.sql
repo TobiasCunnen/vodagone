@@ -8,7 +8,10 @@ create table Abonnementen
 (
 id int identity(1,1) primary key,
 aanbieder varchar(255) not null,
-dienst varchar(255) not null
+dienst varchar(255) not null,
+prijs decimal(9,2),
+verdubbeling varchar(255),
+deelbaar bit
 );
 
 create table Abonnees
@@ -23,12 +26,7 @@ create table AbonnementenVanAbonnees
 (
 abonneesId int,
 abonnementId int,
-aanbieder varchar(255) not null,
-dienst varchar(255) not null,
-prijs decimal(9,2),
 startDatum date,
-verdubbeling varchar(255),
-deelbaar bit,
 status varchar(255),
 
 primary key(abonneesId,abonnementId),

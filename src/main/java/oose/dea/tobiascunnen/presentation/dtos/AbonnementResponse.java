@@ -1,17 +1,19 @@
 package oose.dea.tobiascunnen.presentation.dtos;
 
+import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
+
 import java.util.List;
 
 public class AbonnementResponse {
 
-    private List<SimpelAbonnement> abonnementen;
+    private List<AbonnementenPOJO> abonnementen;
     private double totalPrice;
 
-    public List<SimpelAbonnement> getAbonnementen() {
+    public List<AbonnementenPOJO> getAbonnementen() {
         return abonnementen;
     }
 
-    public void setAbonnementen(List<SimpelAbonnement> abonnementen) {
+    public void setAbonnementen(List<AbonnementenPOJO> abonnementen) {
         this.abonnementen = abonnementen;
     }
 

@@ -1,19 +1,21 @@
 package oose.dea.tobiascunnen.presentation;
 
+import oose.dea.tobiascunnen.service.AbonnementenService;
 
-import oose.dea.tobiascunnen.presentation.dtos.SimpelAbonnement;
-
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
 
 @Path("abonnementen/all")
 public class AllAbonnementen {
+
+    @Inject
+    AbonnementenService abonnementenService;
+
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
@@ -21,17 +23,8 @@ public class AllAbonnementen {
 
         if ("1234-1234".equals(token)) {
 
-            List<SimpelAbonnement> aboList = new ArrayList<>();
+            return abonnementenService.getAbonneenten();
 
-            SimpelAbonnement s1 = new SimpelAbonnement(0, "vodafone", "Mobiele telefonie 100");
-            SimpelAbonnement s2 = new SimpelAbonnement(1, "vodafone", "Mobiele telefonie 250");
-            SimpelAbonnement s3 = new SimpelAbonnement(2,"ziggo", "kabel-internet(download 300 Mbps)");
-
-            aboList.add(s1);
-            aboList.add(s2);
-            aboList.add(s3);
-
-            return Response.ok().entity(aboList).build();
         } else {
             return Response.status(403).build();
         }
