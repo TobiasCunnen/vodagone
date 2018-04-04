@@ -1,7 +1,6 @@
 package oose.dea.tobiascunnen.domain;
 
-import oose.dea.tobiascunnen.datasource.connection.MSSQLConnection;
-import oose.dea.tobiascunnen.datasource.connection.MySQLConnection;
+import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 
@@ -22,7 +21,7 @@ public class AbonnementenVanAbonneesDAO {
     private final double verdubbeld = 1.5;
 
     @Inject
-    private MySQLConnection dbConnection;
+    private DBConnection dbConnection;
 
     private Connection con;
 

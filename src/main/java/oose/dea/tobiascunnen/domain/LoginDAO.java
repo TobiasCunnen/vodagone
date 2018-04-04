@@ -1,7 +1,7 @@
 package oose.dea.tobiascunnen.domain;
 
 
-import oose.dea.tobiascunnen.datasource.connection.MySQLConnection;
+import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.domain.POJO.LoginPOJO;
 
 import javax.inject.Inject;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class LoginDAO {
 
     @Inject
-    private MySQLConnection dbConnection;
+    private DBConnection dbConnection;
 
     private Connection con;
 

@@ -1,6 +1,6 @@
 package oose.dea.tobiascunnen.domain;
 
-import oose.dea.tobiascunnen.datasource.connection.MySQLConnection;
+import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.domain.POJO.AbonneesPOJO;
 
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import java.util.List;
 public class AbonneesDAO {
 
     @Inject
-    private MySQLConnection dbConnection;
+    private DBConnection dbConnection;
 
     private Connection con;
 
