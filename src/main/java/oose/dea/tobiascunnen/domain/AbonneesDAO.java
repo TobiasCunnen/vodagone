@@ -1,6 +1,8 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
+import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
+import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
 import oose.dea.tobiascunnen.domain.POJO.AbonneesPOJO;
 
 import javax.inject.Inject;
@@ -30,7 +32,7 @@ public class AbonneesDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1,1);
+            st.setInt(1,LoginMapper.getId());
 
             ResultSet rs = st.executeQuery();
 
@@ -66,11 +68,23 @@ public class AbonneesDAO {
 
             abonnee = getRowData(rs);
 
+            schareAbonnement(abonnee.getId(),SelectedAboMapper.getId());
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return abonnee;
+    }
+
+    @Inject
+    AbonnementenVanAbonneesDAO dao;
+
+    private void schareAbonnement(int aboneeId, int abonnementId) {
+
+        dao.setLoginId(aboneeId);
+
+        dao.addAbonnement(abonnementId,"","standaard","proef");
     }
 
     private AbonneesPOJO getRowData(ResultSet rs) throws SQLException {

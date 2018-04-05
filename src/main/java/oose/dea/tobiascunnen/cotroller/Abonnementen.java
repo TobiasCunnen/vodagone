@@ -1,4 +1,4 @@
-package oose.dea.tobiascunnen.presentation;
+package oose.dea.tobiascunnen.cotroller;
 
 import jdk.nashorn.internal.parser.Token;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementRequest;

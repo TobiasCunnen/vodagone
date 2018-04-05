@@ -1,6 +1,8 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
+import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
+import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
 import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 
@@ -24,6 +26,7 @@ public class AbonnementenVanAbonneesDAO {
     private DBConnection dbConnection;
 
     private Connection con;
+    private int loginId = LoginMapper.getId();
 
     public AbonnementResponse getAbonnementenVanAbonnee() {
 
@@ -42,7 +45,7 @@ public class AbonnementenVanAbonneesDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1,1);
+            st.setInt(1,loginId);
 
             ResultSet rs = st.executeQuery();
 
@@ -81,7 +84,7 @@ public class AbonnementenVanAbonneesDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1,1);
+            st.setInt(1,loginId);
             st.setInt(2,id);
 
             ResultSet rs = st.executeQuery();
@@ -89,6 +92,8 @@ public class AbonnementenVanAbonneesDAO {
             rs.next();
 
             abonnement = getRowData(rs);
+
+            setSelectedAboMapper(rs);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,7 +115,8 @@ public class AbonnementenVanAbonneesDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1,1);
+
+            st.setInt(1, loginId);
             st.setInt(2,abonnementId);
             st.setString(3,dateFormat.format(date));
             st.setString(4,verdubbeling);
@@ -135,7 +141,7 @@ public class AbonnementenVanAbonneesDAO {
 
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setInt(1,1);
+            st.setInt(1,loginId);
             st.setInt(2,abonnementId);
 
             st.executeUpdate();
@@ -156,7 +162,7 @@ public class AbonnementenVanAbonneesDAO {
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setString(1,status);
-            st.setInt(2,1);
+            st.setInt(2,loginId);
             st.setInt(3,abonnementId);
 
             st.executeUpdate();
@@ -176,7 +182,7 @@ public class AbonnementenVanAbonneesDAO {
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setString(1,verdubbeling);
-            st.setInt(2,1);
+            st.setInt(2,loginId);
             st.setInt(3,id);
 
             st.executeUpdate();
@@ -207,8 +213,29 @@ public class AbonnementenVanAbonneesDAO {
         return abonnement;
     }
 
+    private void setSelectedAboMapper(ResultSet rs) throws SQLException {
+
+        SelectedAboMapper.setId(rs.getInt("abonnementId"));
+        SelectedAboMapper.setAanbieder(rs.getString("aanbieder"));
+        SelectedAboMapper.setDienst(rs.getString("dienst"));
+
+        if("verdubbeld".equals(rs.getString("verdubbeling"))){
+            SelectedAboMapper.setPrijs("€" + (rs.getDouble("prijs")* verdubbeld) + " per maand.");
+        }else {
+            SelectedAboMapper.setPrijs("€" + rs.getString("prijs") + " per maand.");
+        }
+
+        SelectedAboMapper.setStartDatum(rs.getString("startDatum"));
+        SelectedAboMapper.setDeelbaar(rs.getBoolean("deelbaar"));
+        SelectedAboMapper.setVerdubbeling(rs.getString("verdubbeling"));
+        SelectedAboMapper.setStatus(rs.getString("status"));
+    }
     private void setCon(){
 
         this.con = dbConnection.getConnection();
+    }
+
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
     }
 }

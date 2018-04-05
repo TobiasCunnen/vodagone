@@ -1,4 +1,4 @@
-package oose.dea.tobiascunnen.presentation;
+package oose.dea.tobiascunnen.cotroller;
 
 import oose.dea.tobiascunnen.service.AbonnementenService;
 import oose.dea.tobiascunnen.service.TokenService;

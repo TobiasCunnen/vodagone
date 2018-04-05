@@ -1,4 +1,4 @@
-package oose.dea.tobiascunnen.presentation;
+package oose.dea.tobiascunnen.cotroller;
 
 import oose.dea.tobiascunnen.presentation.dtos.LoginRequest;
 import oose.dea.tobiascunnen.presentation.dtos.LoginResponse;
