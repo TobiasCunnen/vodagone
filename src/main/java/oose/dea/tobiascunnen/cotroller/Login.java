@@ -41,4 +41,12 @@ public class Login {
             return Response.status(403).build();
         }
     }
+
+    public void setLoginService(LoginService loginService) {
+        this.loginService = loginService;
+    }
+
+    public void setTokenService(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 }

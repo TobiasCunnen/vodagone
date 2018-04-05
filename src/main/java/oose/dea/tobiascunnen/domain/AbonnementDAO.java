@@ -4,7 +4,10 @@ import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
 
 import javax.inject.Inject;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
