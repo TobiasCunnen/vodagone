@@ -84,7 +84,7 @@ public class AbonneesDAO {
 
         dao.setLoginId(aboneeId);
 
-        dao.addAbonnement(abonnementId,"","standaard","proef");
+        dao.addAbonnement(abonnementId,"standaard","proef");
     }
 
     private AbonneesResponse getRowData(ResultSet rs) throws SQLException {

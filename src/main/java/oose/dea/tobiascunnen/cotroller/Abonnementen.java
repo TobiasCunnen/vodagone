@@ -54,7 +54,7 @@ public class Abonnementen {
 
         if (tokenService.getToken().equals(token)) {
 
-            abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),"standaard","Proef");
+            abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),"standaard","Proef");
 
             return abonnementenVanAbonneesService.getAbonnementen();
 

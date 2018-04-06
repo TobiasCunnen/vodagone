@@ -27,6 +27,7 @@ create table AbonnementenVanAbonnees
 abonneesId int,
 abonnementId int,
 verdubbeling varchar(255),
+prijs decimal(9,2),
 startDatum date,
 status varchar(255),
 

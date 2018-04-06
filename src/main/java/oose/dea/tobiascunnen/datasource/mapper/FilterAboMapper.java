@@ -2,8 +2,7 @@ package oose.dea.tobiascunnen.datasource.mapper;
 
 import java.math.BigDecimal;
 
-public class SelectedAboMapper {
-
+public class FilterAboMapper {
     private static int id;
     private static String aanbieder;
     private static String dienst;
@@ -18,7 +17,7 @@ public class SelectedAboMapper {
     }
 
     public static void setId(int id) {
-        SelectedAboMapper.id = id;
+        FilterAboMapper.id = id;
     }
 
     public static String getAanbieder() {
@@ -26,7 +25,7 @@ public class SelectedAboMapper {
     }
 
     public static void setAanbieder(String aanbieder) {
-        SelectedAboMapper.aanbieder = aanbieder;
+        FilterAboMapper.aanbieder = aanbieder;
     }
 
     public static String getDienst() {
@@ -34,7 +33,7 @@ public class SelectedAboMapper {
     }
 
     public static void setDienst(String dienst) {
-        SelectedAboMapper.dienst = dienst;
+        FilterAboMapper.dienst = dienst;
     }
 
     public static BigDecimal getPrijs() {
@@ -42,7 +41,7 @@ public class SelectedAboMapper {
     }
 
     public static void setPrijs(BigDecimal prijs) {
-        SelectedAboMapper.prijs = prijs;
+        FilterAboMapper.prijs = prijs;
     }
 
     public static String getStartDatum() {
@@ -50,7 +49,7 @@ public class SelectedAboMapper {
     }
 
     public static void setStartDatum(String startDatum) {
-        SelectedAboMapper.startDatum = startDatum;
+        FilterAboMapper.startDatum = startDatum;
     }
 
     public static String getVerdubbeling() {
@@ -58,7 +57,7 @@ public class SelectedAboMapper {
     }
 
     public static void setVerdubbeling(String verdubbeling) {
-        SelectedAboMapper.verdubbeling = verdubbeling;
+        FilterAboMapper.verdubbeling = verdubbeling;
     }
 
     public static boolean isDeelbaar() {
@@ -66,7 +65,7 @@ public class SelectedAboMapper {
     }
 
     public static void setDeelbaar(boolean deelbaar) {
-        SelectedAboMapper.deelbaar = deelbaar;
+        FilterAboMapper.deelbaar = deelbaar;
     }
 
     public static String getStatus() {
@@ -74,6 +73,6 @@ public class SelectedAboMapper {
     }
 
     public static void setStatus(String status) {
-        SelectedAboMapper.status = status;
+        FilterAboMapper.status = status;
     }
 }

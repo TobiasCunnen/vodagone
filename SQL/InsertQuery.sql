@@ -6,7 +6,7 @@ delete from abonnementen;
 
 insert into abonnees (name, email, wachtwoord)
 values
-('Tobias Cunnenn','tobiascunnen@gmail.com','wachtwoord'),
+('Tobias Cunnen','tobiascunnen@gmail.com','wachtwoord'),
 ('Meron Brouwer','Meron.Brouwer@han.nl','wachtwoord'),
 ('Dennis Breuker','Dennis.Breuker@han.nl','wachtwoord'),
 ('Michel Portier','Michel.Portier@han.nl','wachtwoord');
@@ -21,8 +21,8 @@ values
 ('ziggo', 'Eredivisie Live 1 t/m 5', 10, 'Nee',1),
 ('ziggo', 'HBO Plus',15,'Nee',1);
 
-insert into abonnementenVanAbonnees (abonneesId, abonnementId, startDatum,verdubbeling,status)
+insert into abonnementenVanAbonnees (abonneesId, abonnementId, startDatum,verdubbeling,prijs,status)
 values
-(1,1,'2017-01-01','standaard', 'actief'),
-(1,2,'2017-01-01','standaard','actief'),
-(1,4,'2017-01-01','standaard', 'actief');
+(1,1,'2017-01-01','Nee',5, 'actief'),
+(1,2,'2017-01-01','standaard',10,'actief'),
+(1,4,'2017-01-01','Nee',30, 'actief');

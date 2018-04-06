@@ -1,12 +1,15 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
+import oose.dea.tobiascunnen.datasource.mapper.FilterAboMapper;
 import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementenResponse;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +40,7 @@ public class AbonnementenVanAbonneesDAO {
 
         this.setCon();
 
-        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
+        String sql = "SELECT abonnementId,aanbieder,dienst,AVA.prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
                 "FROM AbonnementenVanAbonnees AVA INNER JOIN Abonnementen A ON A.Id = AVA.abonnementId " +
                 "WHERE abonneesId = ?";
 
@@ -53,11 +56,7 @@ public class AbonnementenVanAbonneesDAO {
 
                 abonnementen.add(getRowData(rs));
 
-                if("verdubbeld".equals(rs.getString("verdubbeling"))) {
-                    totalPrice += rs.getDouble("prijs") * verdubbeld;
-                }else {
-                    totalPrice += rs.getDouble("prijs");
-                }
+                totalPrice += rs.getDouble("prijs");
 
             }
         } catch (SQLException e) {
@@ -76,7 +75,7 @@ public class AbonnementenVanAbonneesDAO {
 
         AbonnementResponse abonnement = new AbonnementResponse();
 
-        String sql = "SELECT abonnementId,aanbieder,dienst,prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
+        String sql = "SELECT abonnementId,aanbieder,dienst,AVA.prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
                 "FROM AbonnementenVanAbonnees AVA INNER JOIN Abonnementen A ON A.Id = AVA.abonnementId " +
                 "WHERE abonneesId = ? AND abonnementId = ?";
 
@@ -102,11 +101,11 @@ public class AbonnementenVanAbonneesDAO {
         return abonnement;
     }
 
-    public void addAbonnement(int abonnementId, String startDatum, String verdubbeling, String status){
+    public void addAbonnement(int abonnementId, String verdubbeling, String status){
 
         this.setCon();
 
-        String sql = "INSERT INTO AbonnementenVanAbonnees (abonneesId,abonnementId,startDatum,verdubbeling,status) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO AbonnementenVanAbonnees (abonneesId,abonnementId,startDatum,verdubbeling,prijs,status) VALUES (?,?,?,?,?,?)";
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
@@ -119,8 +118,9 @@ public class AbonnementenVanAbonneesDAO {
             st.setInt(1, loginId);
             st.setInt(2,abonnementId);
             st.setString(3,dateFormat.format(date));
-            st.setString(4,verdubbeling);
-            st.setString(5,status);
+            st.setString(4,FilterAboMapper.getVerdubbeling());
+            st.setBigDecimal(5,FilterAboMapper.getPrijs());
+            st.setString(6,status);
 
             st.executeUpdate();
 
@@ -172,18 +172,19 @@ public class AbonnementenVanAbonneesDAO {
         }
     }
 
-    public void updateVerdubbeling(String verdubbeling, int id) {
+    public void updateVerdubbeling(String verdubbeling,BigDecimal prijs, int id) {
         this.setCon();
 
-        String sql = "UPDATE AbonnementenVanAbonnees SET verdubbeling = ? WHERE abonneesId = ? AND abonnementId = ?";
+        String sql = "UPDATE AbonnementenVanAbonnees SET verdubbeling = ?, prijs = ? WHERE abonneesId = ? AND abonnementId = ?";
 
         try {
 
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setString(1,verdubbeling);
-            st.setInt(2,loginId);
-            st.setInt(3,id);
+            st.setBigDecimal(2,prijs);
+            st.setInt(3,loginId);
+            st.setInt(4,id);
 
             st.executeUpdate();
 
@@ -199,12 +200,7 @@ public class AbonnementenVanAbonneesDAO {
         abonnement.setId(rs.getInt("abonnementId"));
         abonnement.setAanbieder(rs.getString("aanbieder"));
         abonnement.setDienst(rs.getString("dienst"));
-
-        if("verdubbeld".equals(rs.getString("verdubbeling"))){
-            abonnement.setPrijs("€" + (rs.getDouble("prijs")* verdubbeld) + " per maand.");
-        }else {
-            abonnement.setPrijs("€" + rs.getString("prijs") + " per maand.");
-        }
+        abonnement.setPrijs("€" + rs.getString("prijs") + " per maand.");
         abonnement.setStartDatum(rs.getString("startDatum"));
         abonnement.setDeelbaar(rs.getBoolean("deelbaar"));
         abonnement.setVerdubbeling(rs.getString("verdubbeling"));
@@ -218,13 +214,7 @@ public class AbonnementenVanAbonneesDAO {
         SelectedAboMapper.setId(rs.getInt("abonnementId"));
         SelectedAboMapper.setAanbieder(rs.getString("aanbieder"));
         SelectedAboMapper.setDienst(rs.getString("dienst"));
-
-        if("verdubbeld".equals(rs.getString("verdubbeling"))){
-            SelectedAboMapper.setPrijs("€" + (rs.getDouble("prijs")* verdubbeld) + " per maand.");
-        }else {
-            SelectedAboMapper.setPrijs("€" + rs.getString("prijs") + " per maand.");
-        }
-
+        SelectedAboMapper.setPrijs(rs.getBigDecimal("prijs"));
         SelectedAboMapper.setStartDatum(rs.getString("startDatum"));
         SelectedAboMapper.setDeelbaar(rs.getBoolean("deelbaar"));
         SelectedAboMapper.setVerdubbeling(rs.getString("verdubbeling"));

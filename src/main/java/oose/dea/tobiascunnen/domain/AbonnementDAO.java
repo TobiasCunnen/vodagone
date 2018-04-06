@@ -1,6 +1,7 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
+import oose.dea.tobiascunnen.datasource.mapper.FilterAboMapper;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 
 import javax.inject.Inject;
@@ -37,6 +38,7 @@ public class AbonnementDAO {
         while (rs.next()) {
 
           abonnementen.add(getRowData(rs));
+          setFilterAboMapper(rs);
           
         }
         } catch (SQLException e) {
@@ -55,6 +57,16 @@ public class AbonnementDAO {
         abonnement.setDienst(rs.getString("dienst"));
 
         return abonnement;
+    }
+
+    private void setFilterAboMapper(ResultSet rs) throws SQLException {
+
+
+        FilterAboMapper.setId(rs.getInt("id"));
+        FilterAboMapper.setAanbieder(rs.getString("aanbieder"));
+        FilterAboMapper.setDienst(rs.getString("dienst"));
+        FilterAboMapper.setPrijs(rs.getBigDecimal("prijs"));
+        FilterAboMapper.setVerdubbeling(rs.getString("verdubbeling"));
     }
 
     private void setCon(){
