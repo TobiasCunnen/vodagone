@@ -2,6 +2,7 @@ package oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.domain.LoginDAO;
 import oose.dea.tobiascunnen.domain.POJO.LoginPOJO;
+import org.junit.Assert;
 
 import javax.inject.Inject;
 
@@ -19,5 +20,9 @@ public class LoginService {
         }
 
         return false;
+    }
+
+    public void setLoginDAO(LoginDAO loginDAO) {
+        this.loginDAO = loginDAO;
     }
 }

@@ -10,7 +10,7 @@ public class AbonnementenVanAbonneesService {
     @Inject
     AbonnementenVanAbonneesDAO abonnementenVanAbonneesDAO;
 
-    public Response getAbonneenten(){
+    public Response getAbonnementen(){
 
         return Response.ok().entity(abonnementenVanAbonneesDAO.getAbonnementenVanAbonnee()).build();
     }
@@ -34,5 +34,9 @@ public class AbonnementenVanAbonneesService {
 
     public void updateVerdubbeling(String verdubbeling, int id) {
         abonnementenVanAbonneesDAO.updateVerdubbeling(verdubbeling,id);
+    }
+
+    public void setAbonnementenVanAbonneesDAO(AbonnementenVanAbonneesDAO abonnementenVanAbonneesDAO) {
+        this.abonnementenVanAbonneesDAO = abonnementenVanAbonneesDAO;
     }
 }

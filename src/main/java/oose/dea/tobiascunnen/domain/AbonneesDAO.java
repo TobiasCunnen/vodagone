@@ -102,4 +102,8 @@ public class AbonneesDAO {
 
         this.con = dbConnection.getConnection();
     }
+
+    public void setDbConnection(DBConnection dbConnection) {
+        this.dbConnection = dbConnection;
+    }
 }

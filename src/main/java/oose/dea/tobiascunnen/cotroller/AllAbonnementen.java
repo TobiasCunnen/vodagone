@@ -27,10 +27,18 @@ public class AllAbonnementen {
 
         if (tokenService.getToken().equals(token)) {
 
-            return abonnementenService.getAbonneenten(filter);
+            return abonnementenService.getAbonnementen(filter);
 
         } else {
             return Response.status(403).build();
         }
+    }
+
+    public void setAbonnementenService(AbonnementenService abonnementenService) {
+        this.abonnementenService = abonnementenService;
+    }
+
+    public void setTokenService(TokenService tokenService) {
+        this.tokenService = tokenService;
     }
 }

@@ -15,6 +15,12 @@ public class DBConnection {
 
     private DbType dbType = DbType.MySQL;
 
+    public DBConnection(){}
+
+    public DBConnection(DbType type){
+        this.dbType = type;
+    }
+
     private void setProperties() {
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("database.properties"));

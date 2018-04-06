@@ -17,4 +17,8 @@ public class AbonneesService {
     public Response selectOneAbonnee(int id) {
         return Response.ok().entity(abonneesDAO.selectOneAbonnee(id)).build();
     }
+
+    public void setAbonneesDAO(AbonneesDAO abonneesDAO) {
+        this.abonneesDAO = abonneesDAO;
+    }
 }

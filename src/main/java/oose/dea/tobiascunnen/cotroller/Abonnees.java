@@ -44,4 +44,11 @@ public class Abonnees {
 
     }
 
+    public void setAbonneesService(AbonneesService abonneesService) {
+        this.abonneesService = abonneesService;
+    }
+
+    public void setTokenService(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 }

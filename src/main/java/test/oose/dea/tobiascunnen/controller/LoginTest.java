@@ -1,4 +1,4 @@
-package test.oose.dea.tobiascunnen.rest;
+package test.oose.dea.tobiascunnen.controller;
 
 
 import oose.dea.tobiascunnen.cotroller.Login;
@@ -22,8 +22,10 @@ public class LoginTest {
     @Mock
     private LoginRequest mockRequest;
 
+    @Mock
     private LoginService mockService;
 
+    @Mock
     private TokenService mockToken;
 
     @Before
@@ -31,10 +33,10 @@ public class LoginTest {
 
         this.login = new Login();
         this.mockService = mock(LoginService.class);
-        login.setLoginService(mockService);
+        this.login.setLoginService(mockService);
         this.mockRequest = mock(LoginRequest.class);
         this.mockToken = mock(TokenService.class);
-        login.setTokenService(mockToken);
+        this.login.setTokenService(mockToken);
     }
 
 

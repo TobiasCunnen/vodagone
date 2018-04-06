@@ -25,7 +25,7 @@ public class Abonnementen {
 
         if (tokenService.getToken().equals(token)) {
 
-            return abonnementenVanAbonneesService.getAbonneenten();
+            return abonnementenVanAbonneesService.getAbonnementen();
 
         } else {
             return Response.status(403).build();
@@ -56,7 +56,7 @@ public class Abonnementen {
 
             abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),abonnementRequest.getStartDatum(),"standaard","Proef");
 
-            return abonnementenVanAbonneesService.getAbonneenten();
+            return abonnementenVanAbonneesService.getAbonnementen();
 
         } else {
             return Response.status(403).build();
@@ -94,4 +94,11 @@ public class Abonnementen {
         }
     }
 
+    public void setAbonnementenVanAbonneesService(AbonnementenVanAbonneesService abonnementenVanAbonneesService) {
+        this.abonnementenVanAbonneesService = abonnementenVanAbonneesService;
+    }
+
+    public void setTokenService(TokenService tokenService) {
+        this.tokenService = tokenService;
+    }
 }
