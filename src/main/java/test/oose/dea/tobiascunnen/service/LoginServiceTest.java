@@ -1,8 +1,7 @@
 package test.oose.dea.tobiascunnen.service;
 
-import oose.dea.tobiascunnen.cotroller.Login;
 import oose.dea.tobiascunnen.domain.LoginDAO;
-import oose.dea.tobiascunnen.domain.POJO.LoginPOJO;
+import oose.dea.tobiascunnen.presentation.dtos.LoginPOJO;
 import oose.dea.tobiascunnen.service.LoginService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -10,9 +9,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class LoginServiceTest {
 

@@ -3,7 +3,7 @@ package oose.dea.tobiascunnen.domain;
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
-import oose.dea.tobiascunnen.domain.POJO.AbonneesPOJO;
+import oose.dea.tobiascunnen.presentation.dtos.AbonneesResponse;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -20,11 +20,11 @@ public class AbonneesDAO {
 
     private Connection con;
 
-    public List<AbonneesPOJO> getAbonnees() {
+    public List<AbonneesResponse> getAbonnees() {
 
         this.setCon();
 
-        List<AbonneesPOJO> abonnees = new ArrayList<>();
+        List<AbonneesResponse> abonnees = new ArrayList<>();
 
         String sql = "SELECT id, name, email FROM abonnees WHERE id != ?";
 
@@ -48,11 +48,11 @@ public class AbonneesDAO {
         return abonnees;
     }
 
-    public AbonneesPOJO selectOneAbonnee(int id) {
+    public AbonneesResponse selectOneAbonnee(int id) {
 
         this.setCon();
 
-        AbonneesPOJO abonnee = new AbonneesPOJO();
+        AbonneesResponse abonnee = new AbonneesResponse();
 
         String sql = "SELECT id, name, email FROM abonnees WHERE id = ?";
 
@@ -87,9 +87,9 @@ public class AbonneesDAO {
         dao.addAbonnement(abonnementId,"","standaard","proef");
     }
 
-    private AbonneesPOJO getRowData(ResultSet rs) throws SQLException {
+    private AbonneesResponse getRowData(ResultSet rs) throws SQLException {
 
-        AbonneesPOJO abonnee = new AbonneesPOJO();
+        AbonneesResponse abonnee = new AbonneesResponse();
 
         abonnee.setId(rs.getInt("id"));
         abonnee.setName(rs.getString("name"));

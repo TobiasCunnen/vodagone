@@ -3,7 +3,7 @@ package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
-import oose.dea.tobiascunnen.domain.POJO.LoginPOJO;
+import oose.dea.tobiascunnen.presentation.dtos.LoginPOJO;
 
 import javax.inject.Inject;
 import java.sql.Connection;

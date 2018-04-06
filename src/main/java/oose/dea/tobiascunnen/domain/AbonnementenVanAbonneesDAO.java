@@ -3,8 +3,8 @@ package oose.dea.tobiascunnen.domain;
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
-import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementenResponse;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -28,10 +28,10 @@ public class AbonnementenVanAbonneesDAO {
     private Connection con;
     private int loginId = LoginMapper.getId();
 
-    public AbonnementResponse getAbonnementenVanAbonnee() {
+    public AbonnementenResponse getAbonnementenVanAbonnee() {
 
-        AbonnementResponse abonnementResponse = new AbonnementResponse();
-        List<AbonnementenPOJO> abonnementen = new ArrayList<>();
+        AbonnementenResponse abonnementenResponse = new AbonnementenResponse();
+        List<AbonnementResponse> abonnementen = new ArrayList<>();
 
         double totalPrice = 0;
 
@@ -64,17 +64,17 @@ public class AbonnementenVanAbonneesDAO {
             e.printStackTrace();
         }
 
-        abonnementResponse.setAbonnementen(abonnementen);
-        abonnementResponse.setTotalPrice(totalPrice);
+        abonnementenResponse.setAbonnementen(abonnementen);
+        abonnementenResponse.setTotalPrice(totalPrice);
 
-        return abonnementResponse;
+        return abonnementenResponse;
     }
 
-    public AbonnementenPOJO selectOneAbonnementenVanAbonnee(int id) {
+    public AbonnementResponse selectOneAbonnementenVanAbonnee(int id) {
 
         this.setCon();
 
-        AbonnementenPOJO abonnement = new AbonnementenPOJO();
+        AbonnementResponse abonnement = new AbonnementResponse();
 
         String sql = "SELECT abonnementId,aanbieder,dienst,prijs,AVA.verdubbeling,deelbaar, startDatum, status " +
                 "FROM AbonnementenVanAbonnees AVA INNER JOIN Abonnementen A ON A.Id = AVA.abonnementId " +
@@ -192,9 +192,9 @@ public class AbonnementenVanAbonneesDAO {
         }
     }
 
-    private AbonnementenPOJO getRowData(ResultSet rs) throws SQLException {
+    private AbonnementResponse getRowData(ResultSet rs) throws SQLException {
 
-        AbonnementenPOJO abonnement = new AbonnementenPOJO();
+        AbonnementResponse abonnement = new AbonnementResponse();
 
         abonnement.setId(rs.getInt("abonnementId"));
         abonnement.setAanbieder(rs.getString("aanbieder"));

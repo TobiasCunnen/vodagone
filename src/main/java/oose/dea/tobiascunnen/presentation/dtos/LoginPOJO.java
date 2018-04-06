@@ -1,4 +1,4 @@
-package oose.dea.tobiascunnen.domain.POJO;
+package oose.dea.tobiascunnen.presentation.dtos;
 
 public class LoginPOJO {
     private String name;

@@ -1,8 +1,7 @@
 package oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.domain.LoginDAO;
-import oose.dea.tobiascunnen.domain.POJO.LoginPOJO;
-import org.junit.Assert;
+import oose.dea.tobiascunnen.presentation.dtos.LoginPOJO;
 
 import javax.inject.Inject;
 

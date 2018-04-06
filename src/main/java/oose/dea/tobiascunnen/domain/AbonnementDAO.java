@@ -1,7 +1,7 @@
 package oose.dea.tobiascunnen.domain;
 
 import oose.dea.tobiascunnen.datasource.connection.DBConnection;
-import oose.dea.tobiascunnen.domain.POJO.AbonnementenPOJO;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 
 import javax.inject.Inject;
 import java.sql.Connection;
@@ -18,9 +18,9 @@ public class AbonnementDAO {
 
     private Connection con;
 
-    public List<AbonnementenPOJO> getAbonnementen(String filter) {
+    public List<AbonnementResponse> getAbonnementen(String filter) {
         
-        List<AbonnementenPOJO> abonnementen = new ArrayList<>();
+        List<AbonnementResponse> abonnementen = new ArrayList<>();
 
         this.setCon();
 
@@ -46,9 +46,9 @@ public class AbonnementDAO {
         return abonnementen;
     }
 
-    private AbonnementenPOJO getRowData(ResultSet rs) throws SQLException {
+    private AbonnementResponse getRowData(ResultSet rs) throws SQLException {
 
-        AbonnementenPOJO abonnement = new AbonnementenPOJO();
+        AbonnementResponse abonnement = new AbonnementResponse();
 
         abonnement.setId(rs.getInt("id"));
         abonnement.setAanbieder(rs.getString("aanbieder"));

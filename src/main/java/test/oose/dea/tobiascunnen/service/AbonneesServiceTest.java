@@ -1,7 +1,7 @@
 package test.oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.domain.AbonneesDAO;
-import oose.dea.tobiascunnen.domain.POJO.AbonneesPOJO;
+import oose.dea.tobiascunnen.presentation.dtos.AbonneesResponse;
 import oose.dea.tobiascunnen.service.AbonneesService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +14,6 @@ import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 public class AbonneesServiceTest {
@@ -35,7 +34,7 @@ public class AbonneesServiceTest {
     @Test
     public void getAbonneesServiceReturnState200(){
 
-        List<AbonneesPOJO> abonneesList = new ArrayList<>();
+        List<AbonneesResponse> abonneesList = new ArrayList<>();
 
         Mockito.when(mockDAO.getAbonnees()).thenReturn(abonneesList);
 
