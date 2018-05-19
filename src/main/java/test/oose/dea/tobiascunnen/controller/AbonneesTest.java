@@ -11,7 +11,6 @@ import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
 public class AbonneesTest {

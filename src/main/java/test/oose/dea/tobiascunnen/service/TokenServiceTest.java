@@ -5,10 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.inject.Inject;
-
-import static org.junit.Assert.*;
-
 public class TokenServiceTest {
 
     private TokenService target;

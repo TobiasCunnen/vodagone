@@ -9,7 +9,6 @@ import oose.dea.tobiascunnen.presentation.dtos.AbonnementenResponse;
 
 import javax.inject.Inject;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,9 +20,6 @@ import java.util.Date;
 import java.util.List;
 
 public class AbonnementenVanAbonneesDAO {
-
-
-    private final double verdubbeld = 1.5;
 
     @Inject
     private DBConnection dbConnection;
