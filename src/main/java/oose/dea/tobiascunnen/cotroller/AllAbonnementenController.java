@@ -27,7 +27,7 @@ public class AllAbonnementenController {
 
         if (tokenService.getToken().equals(token)) {
 
-            return abonnementenService.getAbonnementen(filter);
+            return  Response.ok().entity(abonnementenService.getAbonnementen(filter)).build();
 
         } else {
             return Response.status(403).build();

@@ -24,7 +24,7 @@ public class AbonneesController {
 
         if(tokenService.getToken().equals(token)) {
 
-            return abonneesService.getAbonnees();
+            return Response.ok().entity(abonneesService.getAbonnees()).build();
         }else {
             return Response.status(403).build();
         }
@@ -37,7 +37,7 @@ public class AbonneesController {
 
         if (tokenService.getToken().equals(token)){
 
-            return abonneesService.selectOneAbonnee(id);
+             return Response.ok().entity(abonneesService.selectOneAbonnee(id)).build();
         }else{
             return Response.status(403).build();
         }

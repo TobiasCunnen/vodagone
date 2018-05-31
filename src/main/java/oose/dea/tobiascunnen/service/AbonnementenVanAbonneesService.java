@@ -2,25 +2,30 @@ package oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
 import oose.dea.tobiascunnen.dao.AbonnementenVanAbonneesDAO;
+import oose.dea.tobiascunnen.domain.Abonnement;
+import oose.dea.tobiascunnen.domain.Abonnementen;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementenResponse;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.List;
 
 public class AbonnementenVanAbonneesService {
 
     @Inject
     AbonnementenVanAbonneesDAO abonnementenVanAbonneesDAO;
 
-    public Response getAbonnementen(){
+    public Abonnementen getAbonnementen(){
 
-        return Response.ok().entity(abonnementenVanAbonneesDAO.getAbonnementenVanAbonnee()).build();
+        return abonnementenVanAbonneesDAO.getAbonnementenVanAbonnee();
     }
 
-    public Response selectOneAbonnement(int id){
+    public Abonnement selectOneAbonnement(int id){
 
-        return Response.ok().entity(abonnementenVanAbonneesDAO.selectOneAbonnementenVanAbonnee(id)).build();
+        return abonnementenVanAbonneesDAO.selectOneAbonnementenVanAbonnee(id);
     }
 
     public void addAbonnement(int abonnementId, String verdubbeling, String status){

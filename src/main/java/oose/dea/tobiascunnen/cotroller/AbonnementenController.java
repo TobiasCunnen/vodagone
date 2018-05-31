@@ -25,7 +25,7 @@ public class AbonnementenController {
 
         if (tokenService.getToken().equals(token)) {
 
-            return abonnementenVanAbonneesService.getAbonnementen();
+            return Response.ok().entity(abonnementenVanAbonneesService.getAbonnementen()).build();
 
         } else {
             return Response.status(403).build();
@@ -39,7 +39,7 @@ public class AbonnementenController {
 
         if (tokenService.getToken().equals(token)) {
 
-          return abonnementenVanAbonneesService.selectOneAbonnement(id);
+          return  Response.ok().entity( abonnementenVanAbonneesService.selectOneAbonnement(id)).build();
 
         } else {
             return Response.status(403).build();
@@ -56,7 +56,7 @@ public class AbonnementenController {
 
             abonnementenVanAbonneesService.addAbonnement(abonnementRequest.getId(),"standaard","Proef");
 
-            return abonnementenVanAbonneesService.getAbonnementen();
+            return Response.ok().entity(abonnementenVanAbonneesService.getAbonnementen()).build();
 
         } else {
             return Response.status(403).build();
@@ -72,7 +72,7 @@ public class AbonnementenController {
 
             abonnementenVanAbonneesService.deleteAbonnement(id);
 
-            return abonnementenVanAbonneesService.selectOneAbonnement(id);
+            return  Response.ok().entity( abonnementenVanAbonneesService.selectOneAbonnement(id)).build();
 
         } else {
             return Response.status(403).build();
@@ -88,7 +88,7 @@ public class AbonnementenController {
 
            abonnementenVanAbonneesService.updateVerdubbeling(abonnementRequest.getVerdubbeling(),id);
 
-            return abonnementenVanAbonneesService.selectOneAbonnement(id);
+            return  Response.ok().entity( abonnementenVanAbonneesService.selectOneAbonnement(id)).build();
         } else {
             return Response.status(403).build();
         }

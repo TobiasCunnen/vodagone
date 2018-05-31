@@ -4,7 +4,6 @@ import oose.dea.tobiascunnen.datasource.connection.DBConnection;
 import oose.dea.tobiascunnen.datasource.mapper.LoginMapper;
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
 import oose.dea.tobiascunnen.domain.Abonnement;
-import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.domain.Abonnementen;
 
 import javax.inject.Inject;
