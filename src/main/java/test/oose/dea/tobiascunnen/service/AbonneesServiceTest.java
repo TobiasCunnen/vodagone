@@ -37,8 +37,8 @@ public class AbonneesServiceTest {
 
         Mockito.when(mockDAO.getAbonnees()).thenReturn(abonneesList);
 
-        Response res = target.getAbonnees();
+        List<AbonneesResponse> actual  = target.getAbonnees();
 
-        Assert.assertEquals(200,res.getStatus());
+        Assert.assertEquals(abonneesList,actual);
     }
 }

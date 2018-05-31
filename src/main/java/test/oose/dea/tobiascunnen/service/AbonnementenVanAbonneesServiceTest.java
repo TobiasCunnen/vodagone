@@ -1,6 +1,8 @@
 package test.oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.dao.AbonnementenVanAbonneesDAO;
+import oose.dea.tobiascunnen.domain.Abonnement;
+import oose.dea.tobiascunnen.domain.Abonnementen;
 import oose.dea.tobiascunnen.presentation.dtos.AbonnementenResponse;
 import oose.dea.tobiascunnen.service.AbonnementenVanAbonneesService;
 import org.junit.Assert;
@@ -30,12 +32,12 @@ public class AbonnementenVanAbonneesServiceTest {
 
     @Test
     public void getAbonnementenFromUserServiceReturnState200(){
-        AbonnementenResponse aboRes = new AbonnementenResponse();
+        Abonnementen abonnementen = mock(Abonnementen.class);
 
-        Mockito.when(mockDAO.getAbonnementenVanAbonnee()).thenReturn(aboRes);
+        Mockito.when(mockDAO.getAbonnementenVanAbonnee()).thenReturn(abonnementen);
 
-        Response res = target.getAbonnementen();
+        Abonnementen actual = target.getAbonnementen();
 
-        Assert.assertEquals(200,res.getStatus());
+        Assert.assertEquals(abonnementen,actual);
     }
 }

@@ -32,14 +32,14 @@ public class AbonnementenServiceTest {
     }
 
     @Test
-    public void getAbonnementenServiceReturnState200() {
+    public void getAbonnementenServiceReturnAboList() {
         List<AbonnementResponse> aboList = new ArrayList<>();
         String filter = "";
 
         Mockito.when(mockDAO.getAbonnementen(filter)).thenReturn(aboList);
 
-        Response res = target.getAbonnementen(filter);
+        List<AbonnementResponse> actual = target.getAbonnementen(filter);
 
-        Assert.assertEquals(200, res.getStatus());
+        Assert.assertEquals(aboList, actual);
     }
 }

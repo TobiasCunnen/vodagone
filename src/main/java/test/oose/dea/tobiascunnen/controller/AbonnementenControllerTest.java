@@ -1,6 +1,8 @@
 package test.oose.dea.tobiascunnen.controller;
 
 import oose.dea.tobiascunnen.cotroller.AbonnementenController;
+import oose.dea.tobiascunnen.domain.Abonnementen;
+import oose.dea.tobiascunnen.presentation.dtos.AbonnementResponse;
 import oose.dea.tobiascunnen.service.AbonnementenVanAbonneesService;
 import oose.dea.tobiascunnen.service.TokenService;
 import org.junit.Assert;
@@ -10,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import javax.ws.rs.core.Response;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 
@@ -38,7 +43,7 @@ public class AbonnementenControllerTest {
     public void getAllAbonnementenFromUserReturnState200() {
 
         Mockito.when(mockToken.getToken()).thenReturn(1234);
-        Mockito.when(mockService.getAbonnementen()).thenReturn(Response.status(200).build());
+        Mockito.when(mockService.getAbonnementen()).thenReturn(mock(Abonnementen.class));
 
         Response res = abonnementenController.abonnementen(1234);
 
