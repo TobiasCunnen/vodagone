@@ -1,7 +1,7 @@
 package oose.dea.tobiascunnen.service;
 
-import oose.dea.tobiascunnen.domain.LoginDAO;
-import oose.dea.tobiascunnen.presentation.dtos.LoginPOJO;
+import oose.dea.tobiascunnen.dao.LoginDAO;
+import oose.dea.tobiascunnen.domain.Login;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ public class LoginService {
 
     public boolean userLogin(String user, String password) {
 
-        LoginPOJO login = loginDAO.getLoginData(user);
+        Login login = loginDAO.getLoginData(user);
 
         if(login.getName().equals(user) && login.getPassword().equals(password)) {
             return true;

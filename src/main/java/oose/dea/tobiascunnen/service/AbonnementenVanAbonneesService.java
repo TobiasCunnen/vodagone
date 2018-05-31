@@ -1,7 +1,7 @@
 package oose.dea.tobiascunnen.service;
 
 import oose.dea.tobiascunnen.datasource.mapper.SelectedAboMapper;
-import oose.dea.tobiascunnen.domain.AbonnementenVanAbonneesDAO;
+import oose.dea.tobiascunnen.dao.AbonnementenVanAbonneesDAO;
 
 import javax.inject.Inject;
 import javax.ws.rs.core.Response;

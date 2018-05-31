@@ -1,7 +1,7 @@
 package test.oose.dea.tobiascunnen.service;
 
-import oose.dea.tobiascunnen.domain.LoginDAO;
-import oose.dea.tobiascunnen.presentation.dtos.LoginPOJO;
+import oose.dea.tobiascunnen.dao.LoginDAO;
+import oose.dea.tobiascunnen.domain.Login;
 import oose.dea.tobiascunnen.service.LoginService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +17,7 @@ public class LoginServiceTest {
     private LoginDAO mockDAO;
 
     @Mock
-    LoginPOJO login;
+    Login login;
 
     private LoginService target;
 
@@ -25,7 +25,7 @@ public class LoginServiceTest {
     public void setUp() {
         this.target = new LoginService();
         this.mockDAO = mock(LoginDAO.class);
-        this.login = mock(LoginPOJO.class);
+        this.login = mock(Login.class);
 
         this.target.setLoginDAO(mockDAO);
     }
