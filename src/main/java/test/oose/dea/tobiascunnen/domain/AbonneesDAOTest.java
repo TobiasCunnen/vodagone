@@ -25,7 +25,7 @@ public class AbonneesDAOTest {
     @Test
     public void getAllshareableAbonneesDAO() {
 
-        Mockito.when(LoginMapper.getId()).thenReturn(1);
+//        Mockito.when(LoginMapper.getId()).thenReturn(1);
 
         Assert.assertNotNull(target.getAbonnees());
     }
